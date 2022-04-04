@@ -1,4 +1,4 @@
-# Monke Mod Manager
+# Bird Mod Manager
 ![Preview](https://i.imgur.com/8WOWdE8.png)
 
 This programs automates the installation of Bird Runners mods and or updates them.
