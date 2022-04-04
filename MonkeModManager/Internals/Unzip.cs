@@ -6,7 +6,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 
-namespace MonkeModManager.Internals
+namespace BirbModManager.Internals
 {
     /// <summary>
     /// Unzip helper class.

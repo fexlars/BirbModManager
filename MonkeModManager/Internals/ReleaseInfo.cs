@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MonkeModManager.Internals.SimpleJSON;
+using BirbModManager.Internals.SimpleJSON;
 
-namespace MonkeModManager.Internals
+namespace BirbModManager.Internals
 {
     public class ReleaseInfo
     {

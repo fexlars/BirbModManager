@@ -1,4 +1,4 @@
-﻿namespace MonkeModManager
+﻿namespace BirbModManager
 {
     partial class FormSelectPlatform
     {

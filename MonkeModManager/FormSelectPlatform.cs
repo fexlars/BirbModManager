@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MonkeModManager
+namespace BirbModManager
 {
     public partial class FormSelectPlatform : Form
     {

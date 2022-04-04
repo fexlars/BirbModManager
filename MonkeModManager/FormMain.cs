@@ -7,13 +7,13 @@ using System.Net;
 using System.IO;
 using System.IO.Compression;
 using System.Threading;
-using MonkeModManager.Internals;
+using BirbModManager.Internals;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using MonkeModManager.Internals.SimpleJSON;
+using BirbModManager.Internals.SimpleJSON;
 using System.Text.RegularExpressions;
 
-namespace MonkeModManager
+namespace BirbModManager
 {
     public partial class FormMain : Form
     {
@@ -67,12 +67,9 @@ namespace MonkeModManager
 
         private void LoadReleases()
         {
-#if !DEBUG
-            var decodedMods = JSON.Parse(DownloadSite("https://raw.githubusercontent.com/DeadlyKitten/MonkeModInfo/master/modinfo.json"));
-            var decodedGroups = JSON.Parse(DownloadSite("https://raw.githubusercontent.com/DeadlyKitten/MonkeModInfo/master/groupinfo.json"));
-#else
-            var decoded = JSON.Parse(File.ReadAllText("C:/Users/Steven/Desktop/testmods.json"));
-#endif
+            var decodedMods = JSON.Parse(DownloadSite("https://raw.githubusercontent.com/fexlars/BirbModInfo/master/modinfo.json"));
+            var decodedGroups = JSON.Parse(DownloadSite("https://raw.githubusercontent.com/fexlars/BirbModInfo/master/groupinfo.json"));
+
             var allMods = decodedMods.AsArray;
             var allGroups = decodedGroups.AsArray;
 
@@ -247,20 +244,20 @@ namespace MonkeModManager
         {
             using (var fileDialog = new OpenFileDialog())
             {
-                fileDialog.FileName = "Gorilla Tag.exe";
+                fileDialog.FileName = "Bird Runner.exe";
                 fileDialog.Filter = "Exe Files (.exe)|*.exe|All Files (*.*)|*.*";
                 fileDialog.FilterIndex = 1;
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string path = fileDialog.FileName;
-                    if (Path.GetFileName(path).Equals("Gorilla Tag.exe"))
+                    if (Path.GetFileName(path).Equals("Bird Runner.exe"))
                     {
                         InstallDirectory = Path.GetDirectoryName(path);
                         textBoxDirectory.Text = InstallDirectory;
                     }
                     else
                     {
-                        MessageBox.Show("That's not Gorilla Tag.exe! please try again!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("That's not Bird Runner.exe! please try again!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -586,9 +583,7 @@ namespace MonkeModManager
                 RQuest.Referer = "";
                 RQuest.UserAgent = "Monke-Mod-Manager";
                 RQuest.Proxy = null;
-#if DEBUG
-                RQuest.Headers.Add("Authorization", $"Token {File.ReadAllText("../../token.txt")}");
-#endif
+
                 HttpWebResponse Response = (HttpWebResponse)RQuest.GetResponse();
                 StreamReader Sr = new StreamReader(Response.GetResponseStream());
                 string Code = Sr.ReadToEnd();
@@ -603,7 +598,7 @@ namespace MonkeModManager
                 }
                 else
                 {
-                    MessageBox.Show("Failed to update version info, please check your internet connection", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to update version info, please check your internet connection " + ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Process.GetCurrentProcess().Kill();
                 return null;
@@ -644,13 +639,13 @@ namespace MonkeModManager
             {
                 using (var fileDialog = new OpenFileDialog())
                 {
-                    fileDialog.FileName = "Gorilla Tag.exe";
+                    fileDialog.FileName = "Bird Runner.exe";
                     fileDialog.Filter = "Exe Files (.exe)|*.exe|All Files (*.*)|*.*";
                     fileDialog.FilterIndex = 1;
                     if (fileDialog.ShowDialog() == DialogResult.OK)
                     {
                         string path = fileDialog.FileName;
-                        if (Path.GetFileName(path).Equals("Gorilla Tag.exe"))
+                        if (Path.GetFileName(path).Equals("Bird Runner.exe"))
                         {
                             InstallDirectory = Path.GetDirectoryName(path);
                             textBoxDirectory.Text = InstallDirectory;
@@ -658,7 +653,7 @@ namespace MonkeModManager
                         }
                         else
                         {
-                            MessageBox.Show("That's not Gorilla Tag.exe! please try again!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("That's not Bird Runner.exe! please try again!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -672,13 +667,13 @@ namespace MonkeModManager
         private void CheckVersion()
         {
             UpdateStatus("Checking for updates...");
-            Int16 version = Convert.ToInt16(DownloadSite("https://raw.githubusercontent.com/DeadlyKitten/MonkeModManager/master/update.txt"));
+            Int16 version = Convert.ToInt16(DownloadSite("https://raw.githubusercontent.com/fexlars/BirbModManager/master/update.txt"));
             if (version > CurrentVersion)
             {
                 this.Invoke((MethodInvoker)(() =>
                 {
                     MessageBox.Show("Your version of the mod installer is outdated! Please download the new one!", "Update available!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Process.Start("https://github.com/DeadlyKitten/MonkeModManager/releases/latest");
+                    Process.Start("https://github.com/fexlars/BirbModManager/releases/latest");
                     Process.GetCurrentProcess().Kill();
                     Environment.Exit(0);
                 }));
@@ -715,7 +710,7 @@ namespace MonkeModManager
             {
                 if (Directory.Exists(steam))
                 {
-                    if (File.Exists(steam + @"\Gorilla Tag.exe"))
+                    if (File.Exists(steam + @"\Bird Runner.exe"))
                     {
                         textBoxDirectory.Text = steam;
                         InstallDirectory = steam;
@@ -728,7 +723,7 @@ namespace MonkeModManager
         }
         private void ShowErrorFindingDirectoryMessage()
         {
-            MessageBox.Show("We couldn't seem to find your Gorilla Tag installation, please press \"OK\" and point us to it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Please give us your Bird Runners Installation, press \"OK\" and point us to it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             NotFoundHandler();
             this.TopMost = true;
         }
@@ -850,6 +845,7 @@ namespace MonkeModManager
                 }
             }
         }
+
     }
 
 }
