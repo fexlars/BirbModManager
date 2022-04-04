@@ -45,7 +45,6 @@ namespace BirbModManager
             this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.viewInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Utilities = new System.Windows.Forms.TabPage();
-            this.labelVersion = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonBepInEx = new System.Windows.Forms.Button();
@@ -89,6 +88,7 @@ namespace BirbModManager
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(138, 13);
@@ -98,19 +98,22 @@ namespace BirbModManager
             // buttonInstall
             // 
             this.buttonInstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonInstall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonInstall.Enabled = false;
+            this.buttonInstall.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonInstall.Location = new System.Drawing.Point(440, 341);
             this.buttonInstall.Name = "buttonInstall";
             this.buttonInstall.Size = new System.Drawing.Size(112, 23);
             this.buttonInstall.TabIndex = 4;
             this.buttonInstall.Text = "Install / Update";
-            this.buttonInstall.UseVisualStyleBackColor = true;
+            this.buttonInstall.UseVisualStyleBackColor = false;
             this.buttonInstall.Click += new System.EventHandler(this.buttonInstall_Click);
             // 
             // labelStatus
             // 
             this.labelStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelStatus.AutoSize = true;
+            this.labelStatus.ForeColor = System.Drawing.SystemColors.Control;
             this.labelStatus.Location = new System.Drawing.Point(7, 346);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(66, 13);
@@ -147,11 +150,13 @@ namespace BirbModManager
             this.listViewMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.listViewMods.CheckBoxes = true;
             this.listViewMods.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderName,
             this.columnHeaderAuthor});
             this.listViewMods.ContextMenuStrip = this.contextMenuStripMain;
+            this.listViewMods.ForeColor = System.Drawing.SystemColors.Control;
             this.listViewMods.FullRowSelect = true;
             this.listViewMods.HideSelection = false;
             this.listViewMods.Location = new System.Drawing.Point(6, 6);
@@ -162,6 +167,7 @@ namespace BirbModManager
             this.listViewMods.View = System.Windows.Forms.View.Details;
             this.listViewMods.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listViewMods_ItemChecked);
             this.listViewMods.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listViewMods_ItemSelectionChanged);
+            this.listViewMods.SelectedIndexChanged += new System.EventHandler(this.listViewMods_SelectedIndexChanged);
             this.listViewMods.DoubleClick += new System.EventHandler(this.listViewMods_DoubleClick);
             // 
             // columnHeaderName
@@ -190,7 +196,7 @@ namespace BirbModManager
             // 
             // Utilities
             // 
-            this.Utilities.Controls.Add(this.labelVersion);
+            this.Utilities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.Utilities.Controls.Add(this.pictureBox1);
             this.Utilities.Controls.Add(this.groupBox1);
             this.Utilities.Controls.Add(this.buttonRestoreMods);
@@ -201,19 +207,6 @@ namespace BirbModManager
             this.Utilities.Size = new System.Drawing.Size(536, 256);
             this.Utilities.TabIndex = 1;
             this.Utilities.Text = "Utilities";
-            this.Utilities.UseVisualStyleBackColor = true;
-            // 
-            // labelVersion
-            // 
-            this.labelVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.labelVersion.AutoSize = true;
-            this.labelVersion.Location = new System.Drawing.Point(199, 209);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(103, 13);
-            this.labelVersion.TabIndex = 11;
-            this.labelVersion.Text = "Bird Mod Manager";
-            this.labelVersion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.labelVersion.UseMnemonic = false;
             // 
             // pictureBox1
             // 
@@ -231,109 +224,127 @@ namespace BirbModManager
             this.groupBox1.Controls.Add(this.buttonOpenConfig);
             this.groupBox1.Controls.Add(this.buttonOpenGameFolder);
             this.groupBox1.Controls.Add(this.labelOpen);
-            this.groupBox1.Location = new System.Drawing.Point(371, 48);
+            this.groupBox1.Location = new System.Drawing.Point(371, 43);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(146, 130);
+            this.groupBox1.Size = new System.Drawing.Size(146, 163);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
             // buttonBepInEx
             // 
-            this.buttonBepInEx.Location = new System.Drawing.Point(6, 96);
+            this.buttonBepInEx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonBepInEx.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonBepInEx.Location = new System.Drawing.Point(6, 120);
             this.buttonBepInEx.Name = "buttonBepInEx";
-            this.buttonBepInEx.Size = new System.Drawing.Size(134, 23);
+            this.buttonBepInEx.Size = new System.Drawing.Size(134, 37);
             this.buttonBepInEx.TabIndex = 5;
             this.buttonBepInEx.Text = "BepInEx Folder";
-            this.buttonBepInEx.UseVisualStyleBackColor = true;
+            this.buttonBepInEx.UseVisualStyleBackColor = false;
             this.buttonBepInEx.Click += new System.EventHandler(this.buttonOpenBepInExFolder_Click);
             // 
             // buttonOpenConfig
             // 
-            this.buttonOpenConfig.Location = new System.Drawing.Point(6, 67);
+            this.buttonOpenConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonOpenConfig.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonOpenConfig.Location = new System.Drawing.Point(6, 77);
             this.buttonOpenConfig.Name = "buttonOpenConfig";
-            this.buttonOpenConfig.Size = new System.Drawing.Size(134, 23);
+            this.buttonOpenConfig.Size = new System.Drawing.Size(134, 37);
             this.buttonOpenConfig.TabIndex = 5;
             this.buttonOpenConfig.Text = "Config Folder";
-            this.buttonOpenConfig.UseVisualStyleBackColor = true;
+            this.buttonOpenConfig.UseVisualStyleBackColor = false;
             this.buttonOpenConfig.Click += new System.EventHandler(this.buttonOpenConfigFolder_Click);
             // 
             // buttonOpenGameFolder
             // 
-            this.buttonOpenGameFolder.Location = new System.Drawing.Point(6, 38);
+            this.buttonOpenGameFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonOpenGameFolder.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonOpenGameFolder.Location = new System.Drawing.Point(6, 34);
             this.buttonOpenGameFolder.Name = "buttonOpenGameFolder";
-            this.buttonOpenGameFolder.Size = new System.Drawing.Size(134, 23);
+            this.buttonOpenGameFolder.Size = new System.Drawing.Size(134, 37);
             this.buttonOpenGameFolder.TabIndex = 5;
             this.buttonOpenGameFolder.Text = "Game Folder";
-            this.buttonOpenGameFolder.UseVisualStyleBackColor = true;
+            this.buttonOpenGameFolder.UseVisualStyleBackColor = false;
             this.buttonOpenGameFolder.Click += new System.EventHandler(this.buttonOpenGameFolder_Click);
             // 
             // labelOpen
             // 
             this.labelOpen.AutoSize = true;
-            this.labelOpen.Location = new System.Drawing.Point(23, 15);
+            this.labelOpen.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelOpen.Location = new System.Drawing.Point(34, 18);
             this.labelOpen.Name = "labelOpen";
-            this.labelOpen.Size = new System.Drawing.Size(99, 13);
+            this.labelOpen.Size = new System.Drawing.Size(77, 13);
             this.labelOpen.TabIndex = 6;
-            this.labelOpen.Text = "Important Folders";
+            this.labelOpen.Text = "Game Folders";
             // 
             // buttonRestoreMods
             // 
-            this.buttonRestoreMods.Location = new System.Drawing.Point(19, 116);
+            this.buttonRestoreMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonRestoreMods.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonRestoreMods.Location = new System.Drawing.Point(19, 169);
             this.buttonRestoreMods.Name = "buttonRestoreMods";
             this.buttonRestoreMods.Size = new System.Drawing.Size(132, 37);
             this.buttonRestoreMods.TabIndex = 3;
             this.buttonRestoreMods.Text = "Restore Mods from Backup";
-            this.buttonRestoreMods.UseVisualStyleBackColor = true;
+            this.buttonRestoreMods.UseVisualStyleBackColor = false;
             this.buttonRestoreMods.Click += new System.EventHandler(this.buttonRestoreMods_Click);
             // 
             // buttonBackupMods
             // 
-            this.buttonBackupMods.Location = new System.Drawing.Point(19, 87);
+            this.buttonBackupMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonBackupMods.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonBackupMods.Location = new System.Drawing.Point(19, 108);
             this.buttonBackupMods.Name = "buttonBackupMods";
-            this.buttonBackupMods.Size = new System.Drawing.Size(132, 23);
+            this.buttonBackupMods.Size = new System.Drawing.Size(132, 37);
             this.buttonBackupMods.TabIndex = 1;
             this.buttonBackupMods.Text = "Backup Mods Folder";
-            this.buttonBackupMods.UseVisualStyleBackColor = true;
+            this.buttonBackupMods.UseVisualStyleBackColor = false;
             this.buttonBackupMods.Click += new System.EventHandler(this.buttonBackupMods_Click);
             // 
             // buttonUninstallAll
             // 
-            this.buttonUninstallAll.Location = new System.Drawing.Point(19, 58);
+            this.buttonUninstallAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonUninstallAll.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonUninstallAll.Location = new System.Drawing.Point(19, 43);
             this.buttonUninstallAll.Name = "buttonUninstallAll";
-            this.buttonUninstallAll.Size = new System.Drawing.Size(132, 23);
+            this.buttonUninstallAll.Size = new System.Drawing.Size(132, 37);
             this.buttonUninstallAll.TabIndex = 0;
             this.buttonUninstallAll.Text = "Uninstall All Mods";
-            this.buttonUninstallAll.UseVisualStyleBackColor = true;
+            this.buttonUninstallAll.UseVisualStyleBackColor = false;
             this.buttonUninstallAll.Click += new System.EventHandler(this.buttonUninstallAll_Click);
             // 
             // buttonModInfo
             // 
             this.buttonModInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonModInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonModInfo.Enabled = false;
+            this.buttonModInfo.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonModInfo.Location = new System.Drawing.Point(322, 341);
             this.buttonModInfo.Name = "buttonModInfo";
             this.buttonModInfo.Size = new System.Drawing.Size(112, 23);
             this.buttonModInfo.TabIndex = 9;
             this.buttonModInfo.Text = "View Mod Info";
-            this.buttonModInfo.UseVisualStyleBackColor = true;
+            this.buttonModInfo.UseVisualStyleBackColor = false;
             this.buttonModInfo.Click += new System.EventHandler(this.buttonModInfo_Click);
             // 
             // buttonToggleMods
             // 
             this.buttonToggleMods.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonToggleMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonToggleMods.Enabled = false;
+            this.buttonToggleMods.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonToggleMods.Location = new System.Drawing.Point(204, 341);
             this.buttonToggleMods.Name = "buttonToggleMods";
             this.buttonToggleMods.Size = new System.Drawing.Size(112, 23);
             this.buttonToggleMods.TabIndex = 10;
             this.buttonToggleMods.Text = "Disable Mods";
-            this.buttonToggleMods.UseVisualStyleBackColor = true;
+            this.buttonToggleMods.UseVisualStyleBackColor = false;
             this.buttonToggleMods.Click += new System.EventHandler(this.buttonToggleMods_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkGreen;
             this.ClientSize = new System.Drawing.Size(566, 376);
             this.Controls.Add(this.buttonToggleMods);
             this.Controls.Add(this.buttonModInfo);
@@ -353,7 +364,6 @@ namespace BirbModManager
             this.Plugins.ResumeLayout(false);
             this.contextMenuStripMain.ResumeLayout(false);
             this.Utilities.ResumeLayout(false);
-            this.Utilities.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -387,7 +397,6 @@ namespace BirbModManager
         private System.Windows.Forms.Button buttonOpenConfig;
         private System.Windows.Forms.Button buttonOpenGameFolder;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Button buttonToggleMods;
     }
 }

@@ -1,5 +1,6 @@
 # Bird Mod Manager
-![Preview](https://i.imgur.com/8WOWdE8.png)
+![Preview](https://i.imgur.com/FT1k6rZ.png)
+![Preview2](https://i.imgur.com/A6f9s3F.png)
 
 This programs automates the installation of Bird Runners mods and or updates them.
 

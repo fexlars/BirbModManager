@@ -38,7 +38,6 @@ namespace BirbModManager
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             releases = new List<ReleaseInfo>();
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            labelVersion.Text = "Monke Mod Manager v" + version.Substring(0, version.Length - 2);
             if (!File.Exists(Path.Combine(InstallDirectory, "winhttp.dll")))
             {
                 if (File.Exists(Path.Combine(InstallDirectory, "mods.disable")))
@@ -846,6 +845,10 @@ namespace BirbModManager
             }
         }
 
+        private void listViewMods_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
